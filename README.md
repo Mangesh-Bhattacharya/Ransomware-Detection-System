@@ -1,17 +1,39 @@
-🛡️ Ransomware Detection System
-A real-time ransomware detection system built in Python with an interactive GUI to monitor and prevent ransomware attacks. The system detects suspicious file modifications, identifies potential threats, and alerts users to take action.
+# 🛡️ Ransomware Detection System
 
-🚀 Features
-✅ Real-time File Monitoring – Uses watchdog to track file changes
-✅ Suspicious Extension Detection – Identifies ransomware-like file extensions
-✅ Process Monitoring & Blocking – Detects and stops suspicious ransomware processes
-✅ Interactive GUI – Alerts users through a graphical interface (Tkinter)
-✅ Lightweight & Efficient – Runs in the background without consuming excessive resources
+## 📌 Overview
+The **Ransomware Detection System** is a Python-based tool designed to monitor file system activities and detect potential ransomware threats in real-time. It leverages heuristic-based detection to identify suspicious file modifications and process activities. Additionally, it features an interactive **GUI** that alerts users and provides a protective mechanism against ransomware attacks.
 
-🏗️ How It Works
-1. **Monitors File System Activity:** Detects files with ransomware-related extensions (`.locked`, `.enc`, `.crypt`, etc.).
-2. **Identifies Suspicious Processes:** Checks running processes for ransomware-like behavior.
-3. **Alerts & Blocks Threats:** Notifies users and attempts to terminate malicious processes.
-4. **Provides a GUI Interface:** Displays real-time alerts and system status.
+## 🚀 Features
+✅ **Real-Time File System Monitoring** – Detects unusual file modifications
+✅ **Suspicious File Extension Detection** – Identifies encrypted or renamed files
+✅ **Process Monitoring** – Scans running processes for ransomware-like behavior
+✅ **Automated Threat Prevention** – Terminates suspicious processes on detection
+✅ **GUI Alert System** – Warns users when threats are detected
 
-📦 Installation
+## 🛠️ Technologies Used  
+- **Python** 🐍  
+- `watchdog` – For real-time file system monitoring  
+- `psutil` – To analyze running processes  
+- `tkinter` – For GUI alerts and notifications  
+
+## 📂 How It Works  
+1. The script **monitors directories** for suspicious file modifications.  
+2. It checks for **suspicious extensions** commonly used by ransomware.  
+3. If detected, the system **alerts the user via a GUI popup**.  
+4. The script also **scans processes** and automatically **terminates potential ransomware** threats.  
+
+## 🖥️ Installation & Usage  
+```bash
+# Clone the repository
+git clone https://github.com/Mangesh-Bhattacharya/Ransomware-Detection-System.git
+cd Ransomware-Detection-System
+
+# Install dependencies
+pip install watchdog psutil tkinter
+
+# Run the script
+python ransomware_detector.py
+```
+
+## ⚠️ Disclaimer  
+This tool is **for educational purposes only**. It is not a substitute for professional antivirus solutions. Always use additional cybersecurity measures to protect your data.
