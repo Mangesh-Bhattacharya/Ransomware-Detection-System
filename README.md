@@ -4,11 +4,11 @@
 The **Ransomware Detection System** is a Python-based tool designed to monitor file system activities and detect potential ransomware threats in real-time. It leverages heuristic-based detection to identify suspicious file modifications and process activities. Additionally, it features an interactive **GUI** that alerts users and provides a protective mechanism against ransomware attacks.
 
 ## 🚀 Features
-✅ **Real-Time File System Monitoring** – Detects unusual file modifications
-✅ **Suspicious File Extension Detection** – Identifies encrypted or renamed files
-✅ **Process Monitoring** – Scans running processes for ransomware-like behavior
-✅ **Automated Threat Prevention** – Terminates suspicious processes on detection
-✅ **GUI Alert System** – Warns users when threats are detected
+✅ **Real-Time File System Monitoring** – Detects unusual file modifications  
+✅ **Suspicious File Extension Detection** – Identifies encrypted or renamed files  
+✅ **Process Monitoring** – Scans running processes for ransomware-like behavior  
+✅ **Automated Threat Prevention** – Terminates suspicious processes on detection  
+✅ **GUI Alert System** – Warns users when threats are detected  
 
 ## 🛠️ Technologies Used  
 - **Python** 🐍  
