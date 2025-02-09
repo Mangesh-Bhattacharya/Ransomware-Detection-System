@@ -27,7 +27,7 @@ The **Ransomware Detection System** is a Python-based tool designed to monitor f
 # Clone the repository
 git clone https://github.com/Mangesh-Bhattacharya/Ransomware-Detection-System.git
 cd Ransomware-Detection-System
-
+```
 ### 2. Install dependencies:
 There are two ways to install the necessary dependencies: using **`pip`** or by using a **requirements.txt** file.
 
@@ -44,6 +44,7 @@ pip install -r requirements.txt
 ```
 
 # Run the script
+```bash
 python main.py
 ```
 
