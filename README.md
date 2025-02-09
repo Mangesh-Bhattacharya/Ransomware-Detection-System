@@ -23,11 +23,10 @@ The **Ransomware Detection System** is a Python-based tool designed to monitor f
 4. The script also **scans processes** and automatically **terminates potential ransomware** threats.  
 
 ## 🖥️ Installation & Usage  
-### 1. Clone the repository:
 ```bash
+# Clone the repository
 git clone https://github.com/Mangesh-Bhattacharya/Ransomware-Detection-System.git
 cd Ransomware-Detection-System
-```
 
 ### 2. Install dependencies:
 There are two ways to install the necessary dependencies: using **`pip`** or by using a **requirements.txt** file.
@@ -44,21 +43,9 @@ pip install watchdog psutil tkinter openpyxl
 pip install -r requirements.txt
 ```
 
-### 3. Run the script:
-```bash
+# Run the script
 python main.py
 ```
 
 ## ⚠️ Disclaimer  
 This tool is **for educational purposes only**. It is not a substitute for professional antivirus solutions. Always use additional cybersecurity measures to protect your data.
-
----
-
-### **requirements.txt** contents:
-Here is the content you should have in your **`requirements.txt`** file:
-
-```
-watchdog==2.1.8
-psutil==5.9.1
-tkinter==8.6
-```
