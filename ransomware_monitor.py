@@ -7,14 +7,41 @@ from datetime import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import csv
+from openpyxl import Workbook
 
+# Define the path for the logs directory
+# 'logs' directory in the project folder
+LOGS_DIR = os.path.join(os.path.dirname(__file__), 'logs')
+# Create the directory if it doesn't exist
+os.makedirs(LOGS_DIR, exist_ok=True)
+
+# Define the log file path in the 'logs' directory
 SUSPICIOUS_EXTENSIONS = {'.locked', '.enc', '.crypt', '.crypto', '.ransom'}
-LOG_FILE = "ransomware_scan_log.csv"  # Change to CSV file
+LOG_FILE_CSV = os.path.join(
+    LOGS_DIR, "ransomware_scan_log.csv")  # CSV log file
+# Excel log file (if using Excel)
+LOG_FILE_XLSX = os.path.join(LOGS_DIR, "ransomware_scan_log.xlsx")
 
 
 class RansomwareMonitor(FileSystemEventHandler):
     def __init__(self, log_widget):
         self.log_widget = log_widget
+        self.create_log()  # Create the log file (CSV or Excel)
+
+    def create_log(self):
+        """Create the log file (CSV or Excel) if it doesn't exist."""
+        if not os.path.exists(LOG_FILE_CSV):
+            with open(LOG_FILE_CSV, mode='w', newline='', encoding='utf-8') as log_file:
+                writer = csv.writer(log_file)
+                # Write headers for CSV
+                writer.writerow(["Timestamp", "Message", "Tag"])
+
+        # Create Excel file if needed (uncomment if using Excel)
+        # if not os.path.exists(LOG_FILE_XLSX):
+        #     wb = Workbook()
+        #     ws = wb.active
+        #     ws.append(["Timestamp", "Message", "Tag"])  # Headers for Excel
+        #     wb.save(LOG_FILE_XLSX)
 
     def on_modified(self, event):
         if not event.is_directory:
@@ -32,10 +59,16 @@ class RansomwareMonitor(FileSystemEventHandler):
         full_message = f"{timestamp} - {message}"
 
         # Write log to CSV
-        with open(LOG_FILE, mode='a', newline='', encoding='utf-8') as log_file:
+        with open(LOG_FILE_CSV, mode='a', newline='', encoding='utf-8') as log_file:
             writer = csv.writer(log_file)
             # Write timestamp, message, and tag
             writer.writerow([timestamp, message, tag])
+
+        # Write to Excel (if using Excel logging, uncomment the relevant section)
+        # wb = openpyxl.load_workbook(LOG_FILE_XLSX)
+        # ws = wb.active
+        # ws.append([timestamp, message, tag])
+        # wb.save(LOG_FILE_XLSX)
 
         # Insert log message into the widget with the appropriate color
         self.log_widget.insert(tk.END, full_message + "\n", tag)
@@ -43,7 +76,6 @@ class RansomwareMonitor(FileSystemEventHandler):
 
     def scan_system(self):
         """Scan system directories for suspicious files and log them."""
-        # You can define your directories to scan here
         directories_to_scan = [os.path.expanduser("~"), "C:/", "/home/"]
 
         for directory in directories_to_scan:
@@ -61,7 +93,6 @@ class RansomwareMonitor(FileSystemEventHandler):
                         self.log_event(
                             f"Non-suspicious file: {file_path}", "low")
 
-            # After scanning a directory, show progress in the GUI
             self.log_event(f"Finished scanning {directory}\n", "info")
 
 
@@ -89,6 +120,5 @@ def start_monitoring(log_widget):
 
 
 def start_scan(log_widget):
-    # Start system scan in a separate thread so the GUI remains responsive
     monitor = RansomwareMonitor(log_widget)
     threading.Thread(target=monitor.scan_system, daemon=True).start()
