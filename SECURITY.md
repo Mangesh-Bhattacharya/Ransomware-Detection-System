@@ -12,7 +12,7 @@ The following table outlines the versions currently supported with security upda
 If you discover any security vulnerabilities, please follow these steps:
 
 1. **Do not disclose publicly** – Instead, report it privately to the maintainers.
-2. **Contact us via email** – Send a detailed report to `security@yourdomain.com`.
+2. **Contact us via email** – Send a detailed report to `security@gh-bhattacharya.com`.
 3. **Provide a detailed description** – Include steps to reproduce, potential impacts, and any mitigation suggestions.
 4. **Wait for a response** – We will acknowledge the report within 48 hours and work on a fix.
 
