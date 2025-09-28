@@ -14,20 +14,16 @@ from openpyxl import Workbook
 LOGS_DIR = os.path.join(os.path.dirname(__file__), 'logs')
 # Create the directory if it doesn't exist
 os.makedirs(LOGS_DIR, exist_ok=True)
-
 # Define the log file path in the 'logs' directory
 SUSPICIOUS_EXTENSIONS = {'.locked', '.enc', '.crypt', '.crypto', '.ransom'}
 LOG_FILE_CSV = os.path.join(
     LOGS_DIR, "ransomware_scan_log.csv")  # CSV log file
 # Excel log file (if using Excel)
 LOG_FILE_XLSX = os.path.join(LOGS_DIR, "ransomware_scan_log.xlsx")
-
-
 class RansomwareMonitor(FileSystemEventHandler):
     def __init__(self, log_widget):
         self.log_widget = log_widget
         self.create_log()  # Create the log file (CSV or Excel)
-
     def create_log(self):
         """Create the log file (CSV or Excel) if it doesn't exist."""
         if not os.path.exists(LOG_FILE_CSV):
