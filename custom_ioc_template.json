@@ -1,0 +1,46 @@
+{
+  "_comment": "Custom IOC Feed Template for the Ransomware Detection System.",
+  "_description": [
+    "Add your organization-specific or sector-specific indicators of compromise here.",
+    "Pass this file to the system via: python main.py --ioc custom_ioc_template.json",
+    "or load it at runtime via the 'Apply Profile' dialog in the GUI.",
+    "",
+    "Sources to populate this feed from:",
+    "  - CISA Known Exploited Vulnerabilities (KEV) catalog",
+    "  - CISA #StopRansomware advisories (https://www.cisa.gov/stopransomware)",
+    "  - FBI Flash / TLP:WHITE threat reports",
+    "  - ISAC threat feeds (FS-ISAC, H-ISAC, E-ISAC, WaterISAC, etc.)",
+    "  - NCCIC / US-CERT advisories",
+    "  - VirusTotal / MISP exports",
+    "  - Internal SIEM / EDR detections"
+  ],
+
+  "hashes": [
+    "REPLACE_WITH_KNOWN_BAD_SHA256_HASH_1",
+    "REPLACE_WITH_KNOWN_BAD_SHA256_HASH_2"
+  ],
+
+  "extensions": [
+    ".REPLACE_sector_specific_extension",
+    ".REPLACE_custom_ransomware_extension"
+  ],
+
+  "process_patterns": [
+    "replace_suspicious_process_name_1",
+    "replace_suspicious_process_name_2"
+  ],
+
+  "metadata": {
+    "feed_name": "Organization Custom IOC Feed",
+    "organization": "Your Organization Name",
+    "industry": "healthcare | banking | nuclear | energy | government | general",
+    "feed_version": "1.0",
+    "last_updated": "YYYY-MM-DD",
+    "source_references": [
+      "CISA Advisory AA23-XXXXX",
+      "FBI Flash MU-XXXXXXXXXX"
+    ],
+    "tlp_classification": "TLP:WHITE",
+    "contact": "security@yourorganization.example"
+  }
+}
