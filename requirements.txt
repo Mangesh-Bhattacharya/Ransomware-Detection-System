@@ -1,3 +1,12 @@
-psutil==5.9.3
-watchdog==2.2.1
+# Core file system monitoring
+watchdog==4.0.0
+
+# Process inspection and management
+psutil==5.9.8
+
+# Excel report generation
 openpyxl==3.1.3
+
+# GUI (bundled with Python 3.x — listed for documentation purposes)
+# tkinter  # Install via: apt install python3-tk  (Linux)
+#           #              Included in Python installer on Windows/macOS
