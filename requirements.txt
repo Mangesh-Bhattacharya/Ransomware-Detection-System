@@ -18,7 +18,7 @@ numpy==1.26.4
 joblib==1.4.2
 
 # --- Real-time security dashboard ---
-streamlit==1.35.0
+streamlit==1.54.0
 plotly==5.22.0
 
 # --- LLM-based assistant (optional; offline fallback works without it) ---
