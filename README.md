@@ -196,3 +196,45 @@ professional incident response services.  Always deploy as part of a layered def
 strategy and in accordance with your organization’s security policy and applicable regulations.
 For OT/ICS environments (nuclear, energy), validate compatibility with safety-critical
 systems before deployment.
+
+
+## AI/ML Extensions — Behavioral Intelligence & Automated Response
+
+Beyond the original five-layer detection pipeline, this project now includes
+an AI-augmented tier for anomaly detection, natural-language analysis, live
+visualization, safe attack simulation, and automated containment.
+
+| Module | Purpose |
+|---|---|
+| `ml_models/anomaly_detector.py` | `IsolationForest` (unsupervised) + `RandomForestClassifier` (supervised) trained on file-activity/process-behavior features; blends both into a single 0–100 risk score |
+| `llm_assistant.py` | LLM-powered assistant that explains suspicious events, generates incident narratives, and recommends prioritized mitigation steps — works fully offline via deterministic templates, or online via any OpenAI-compatible API |
+| `dashboard.py` | Real-time Streamlit dashboard: live telemetry, ML risk score simulator, incident report browser, top-process view, and a one-click sandbox trigger |
+| `sandbox/sandbox_simulator.py` | Safe, self-contained simulation of ransomware-like file behavior (no real malware/cryptography) used to measure detection accuracy end-to-end |
+| `auto_response.py` | Dry-run-by-default containment engine: process termination, file quarantine (move, never delete), and network adapter isolation |
+| `docs/ARCHITECTURE.md` | Full architecture diagram and data-flow documentation for the extended platform |
+| `docs/DEPLOYMENT.md` | Step-by-step local, Docker, and systemd deployment instructions |
+
+### Quick start for the new components
+
+```bash
+pip install -r requirements.txt
+
+# Train the ML anomaly-detection models (uses a synthetic bootstrap dataset)
+python ml_models/anomaly_detector.py
+
+# Launch the real-time dashboard
+streamlit run dashboard.py
+
+# Run a safe sandbox attack simulation to validate detection accuracy
+python sandbox/sandbox_simulator.py
+```
+
+The LLM assistant runs fully offline by default. To enable live LLM calls,
+set `LLM_API_KEY` (and optionally `LLM_MODEL` / `LLM_BASE_URL`) as
+environment variables — never commit API keys to source control.
+
+`auto_response.py` defaults every action to `dry_run=True`. Live
+enforcement (process termination, file quarantine, network isolation) must
+be explicitly enabled by the operator and should be validated in
+`sandbox/sandbox_simulator.py` and a staging environment first. See
+`docs/ARCHITECTURE.md` and `docs/DEPLOYMENT.md` for full details.
