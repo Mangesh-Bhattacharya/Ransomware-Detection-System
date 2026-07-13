@@ -1,0 +1,48 @@
+# docker-compose.yml — one-command local deployment
+#
+# Usage:
+#   docker compose up --build
+#
+# This starts:
+#   * "dashboard" — the Streamlit real-time dashboard on http://localhost:8501
+#   * "monitor"   — the background file/process monitor (general industry profile)
+#
+# Both containers share the same "logs" volume so the dashboard can read
+# telemetry and incident reports produced by the monitor in real time.
+#
+# To train the ML models once before first use:
+#   docker compose run --rm trainer
+
+services:
+  dashboard:
+    build: .
+    command: ["streamlit", "run", "dashboard.py", "--server.address", "0.0.0.0"]
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./logs:/app/logs
+      - ./ml_models/saved_models:/app/ml_models/saved_models
+    environment:
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o-mini}
+    restart: unless-stopped
+
+  monitor:
+    build: .
+    command: ["python", "main.py", "--industry", "general"]
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    # NOTE: for the monitor to observe the *host's* real file system rather
+    # than the container's own filesystem, bind-mount the directory you
+    # want protected, e.g.:
+    #   volumes:
+    #     - /home/youruser/Documents:/watched:ro
+    # and adjust ransomware_monitor.py's watch path accordingly.
+
+  trainer:
+    build: .
+    command: ["python", "ml_models/anomaly_detector.py"]
+    volumes:
+      - ./ml_models/saved_models:/app/ml_models/saved_models
+    profiles: ["tools"]
