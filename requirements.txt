@@ -8,5 +8,18 @@ psutil==5.9.8
 openpyxl==3.1.3
 
 # GUI (bundled with Python 3.x — listed for documentation purposes)
-# tkinter  # Install via: apt install python3-tk  (Linux)
-#           #              Included in Python installer on Windows/macOS
+# tkinter # Install via: apt install python3-tk (Linux)
+# # Included in Python installer on Windows/macOS
+
+# --- ML anomaly detection (IsolationForest / RandomForest) ---
+scikit-learn==1.4.2
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+
+# --- Real-time security dashboard ---
+streamlit==1.35.0
+plotly==5.22.0
+
+# --- LLM-based assistant (optional; offline fallback works without it) ---
+openai==1.30.5
