@@ -15,10 +15,10 @@ The system provides **five layers of detection**:
 | Layer | Method | Module |
 |-------|--------|--------|
 | 1 | Suspicious file extension matching (50+ ransomware extensions) | `threat_intelligence.py` |
-| 2 | Behavioral rate analysis — renames, modifications, deletions per minute | `behavioral_analyzer.py` |
-| 3 | Shannon entropy screening — detects encrypted files in real time | `behavioral_analyzer.py` |
+| 2 | Behavioral rate analysis - renames, modifications, deletions per minute | `behavioral_analyzer.py` |
+| 3 | Shannon entropy screening - detects encrypted files in real time | `behavioral_analyzer.py` |
 | 4 | SHA-256 hash matching against known ransomware family samples | `threat_intelligence.py` |
-| 5 | Process name heuristics — kills ransomware-like processes on detection | `ransomware_monitor.py` |
+| 5 | Process name heuristics - kills ransomware-like processes on detection | `ransomware_monitor.py` |
 
 ---
 
@@ -32,7 +32,7 @@ The system provides **five layers of detection**:
 | **Custom IOC Feeds** | Load JSON files with org-specific hashes, extensions, and process patterns (see `custom_ioc_template.json`) |
 | **Incident Reports** | Structured JSON incident reports saved to `logs/incidents/` with NIST SP 800-61r2 phase mapping |
 | **LLM Context Packets** | `BehavioralAnalyzer.build_llm_context_packet()` packages all telemetry for downstream LLM-based analysis |
-| **Live Dashboard** | Real-time counter panel — modify rate, rename rate, delete rate, extension diversity, alert count |
+| **Live Dashboard** | Real-time counter panel - modify rate, rename rate, delete rate, extension diversity, alert count |
 | **Full-System Scan** | Walk entire filesystem and apply all detection layers to every file |
 | **Real-Time Monitoring** | Watchdog-based directory monitoring with recursive observation |
 | **Process Blocking** | Automatic termination of processes matching 25+ known ransomware name patterns |
@@ -142,7 +142,7 @@ profile data. This packet can be submitted to any LLM API (self-hosted or commer
 - Natural-language compliance impact assessment
 - Threat-actor attribution suggestions
 
-No LLM calls are made inside the library — integration is entirely in the hands of the operator.
+No LLM calls are made inside the library integration is entirely in the hands of the operator.
 
 ---
 
@@ -198,7 +198,7 @@ For OT/ICS environments (nuclear, energy), validate compatibility with safety-cr
 systems before deployment.
 
 
-## AI/ML Extensions — Behavioral Intelligence & Automated Response
+## AI/ML Extensions - Behavioral Intelligence & Automated Response
 
 Beyond the original five-layer detection pipeline, this project now includes
 an AI-augmented tier for anomaly detection, natural-language analysis, live
@@ -207,7 +207,7 @@ visualization, safe attack simulation, and automated containment.
 | Module | Purpose |
 |---|---|
 | `ml_models/anomaly_detector.py` | `IsolationForest` (unsupervised) + `RandomForestClassifier` (supervised) trained on file-activity/process-behavior features; blends both into a single 0–100 risk score |
-| `llm_assistant.py` | LLM-powered assistant that explains suspicious events, generates incident narratives, and recommends prioritized mitigation steps — works fully offline via deterministic templates, or online via any OpenAI-compatible API |
+| `llm_assistant.py` | LLM-powered assistant that explains suspicious events, generates incident narratives, and recommends prioritized mitigation steps work fully offline via deterministic templates, or online via any OpenAI-compatible API |
 | `dashboard.py` | Real-time Streamlit dashboard: live telemetry, ML risk score simulator, incident report browser, top-process view, and a one-click sandbox trigger |
 | `sandbox/sandbox_simulator.py` | Safe, self-contained simulation of ransomware-like file behavior (no real malware/cryptography) used to measure detection accuracy end-to-end |
 | `auto_response.py` | Dry-run-by-default containment engine: process termination, file quarantine (move, never delete), and network adapter isolation |
@@ -231,7 +231,7 @@ python sandbox/sandbox_simulator.py
 
 The LLM assistant runs fully offline by default. To enable live LLM calls,
 set `LLM_API_KEY` (and optionally `LLM_MODEL` / `LLM_BASE_URL`) as
-environment variables — never commit API keys to source control.
+environment variables never commit API keys to source control.
 
 `auto_response.py` defaults every action to `dry_run=True`. Live
 enforcement (process termination, file quarantine, network isolation) must
