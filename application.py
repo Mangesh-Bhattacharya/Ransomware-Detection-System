@@ -8,16 +8,14 @@
 #   - Color-coded severity tags (critical, high, medium, low, info)
 
 import os
-import threading
 import tkinter as tk
-from tkinter import scrolledtext, ttk, filedialog, messagebox
 from datetime import datetime
+from tkinter import filedialog, messagebox, scrolledtext, ttk
 
-from threat_intelligence import INDUSTRY_PROFILES, reset_engine, get_engine
-from ransomware_monitor import start_scan, start_monitoring, block_ransomware
-from behavioral_analyzer import reset_analyzer, get_analyzer
-from incident_reporter import IncidentReporter, REPORTS_DIR
-
+from behavioral_analyzer import get_analyzer, reset_analyzer
+from incident_reporter import REPORTS_DIR, IncidentReporter
+from ransomware_monitor import block_ransomware, start_monitoring, start_scan
+from threat_intelligence import INDUSTRY_PROFILES, get_engine, reset_engine
 
 # ---------------------------------------------------------------------------
 # COLOR SCHEME
@@ -90,7 +88,7 @@ def start_gui():
 
     industry_keys = list(INDUSTRY_PROFILES.keys())
     industry_labels = [INDUSTRY_PROFILES[k]["label"] for k in industry_keys]
-    industry_map = dict(zip(industry_labels, industry_keys))
+    industry_map = dict(zip(industry_labels, industry_keys, strict=False))
 
     industry_combo = ttk.Combobox(
         config_frame,

@@ -11,22 +11,26 @@
 #   5. Process name heuristics    (kill ransomware-like process names)
 #   6. Critical-path awareness    (industry-specific directory protection)
 
-import os
-import psutil
-import time
-import threading
-import logging
-from datetime import datetime
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 import csv
-from openpyxl import Workbook
+import logging
+import os
+import threading
+import time
+from datetime import datetime
 
-from threat_intelligence import get_engine
+import psutil
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
 from behavioral_analyzer import (
-    get_analyzer, reset_analyzer,
-    EVT_MODIFY, EVT_RENAME, EVT_DELETE, EVT_CREATE,
+    EVT_CREATE,
+    EVT_DELETE,
+    EVT_MODIFY,
+    EVT_RENAME,
+    get_analyzer,
+    reset_analyzer,
 )
+from threat_intelligence import get_engine
 
 logger = logging.getLogger(__name__)
 

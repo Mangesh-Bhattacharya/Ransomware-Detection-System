@@ -11,10 +11,12 @@ The following table outlines the versions currently supported with security upda
 ## 🚨 Reporting a Vulnerability
 If you discover any security vulnerabilities, please follow these steps:
 
-1. **Do not disclose publicly** – Instead, report it privately to the maintainers.
-2. **Contact us via email** – Send a detailed report to `security@gh-bhattacharya.com`.
+1. **Do not disclose publicly** – Do not open a public issue for security vulnerabilities.
+2. **Use GitHub's private advisory flow** – Go to this repository's **Security** tab →
+   **Report a vulnerability** to open a private security advisory with the maintainer.
+   This keeps the report confidential until a fix is available.
 3. **Provide a detailed description** – Include steps to reproduce, potential impacts, and any mitigation suggestions.
-4. **Wait for a response** – We will acknowledge the report within 48 hours and work on a fix.
+4. **Wait for a response** – Reports will be acknowledged within 48 hours and triaged for a fix.
 
 ## 🛡️ Security Best Practices
 To ensure the security of your system while using this project:

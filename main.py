@@ -7,10 +7,10 @@
 #   python main.py --industry healthcare    # Pre-select industry on startup
 #   python main.py --ioc /path/custom.json  # Load custom IOC feed on startup
 
+import argparse
+import logging
 import os
 import sys
-import logging
-import argparse
 
 # Configure structured logging to both console and log file
 LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
