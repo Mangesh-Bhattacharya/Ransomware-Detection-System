@@ -10,14 +10,13 @@
 #   - LLM-ready context packaging for external behavioral reasoning
 #   - Thread-safe design for concurrent watchdog callbacks
 
-import os
-import time
-import threading
 import logging
-import json
-from collections import deque, defaultdict
+import os
+import threading
+import time
+from collections import deque
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Callable
+from typing import Callable, Dict, List, Optional
 
 from threat_intelligence import get_engine
 

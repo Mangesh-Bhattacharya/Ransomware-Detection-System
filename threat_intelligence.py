@@ -7,13 +7,13 @@
 # Compliance frameworks: HIPAA, PCI-DSS, NRC 10CFR73.54, NERC CIP, FISMA, CMMC,
 #                        GLBA, SOX, SWIFT-CSCF, IEC-62443, NIST-CSF, ISO-27001, SOC2
 
-import os
-import json
 import hashlib
+import json
 import logging
 import math
+import os
 import platform
-from typing import Dict, List, Set, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 logger = logging.getLogger(__name__)
 

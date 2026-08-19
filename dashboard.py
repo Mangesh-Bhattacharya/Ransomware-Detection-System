@@ -27,8 +27,8 @@ import pandas as pd
 import psutil
 import streamlit as st
 
-from ml_models.anomaly_detector import MLAnomalyDetector
 from llm_assistant import LLMSecurityAssistant
+from ml_models.anomaly_detector import MLAnomalyDetector
 
 LOG_DIR = Path("logs")
 CSV_LOG = LOG_DIR / "ransomware_scan_log.csv"

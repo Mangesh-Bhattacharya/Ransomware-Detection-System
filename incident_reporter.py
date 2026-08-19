@@ -11,13 +11,12 @@
 #   - NRC Inspection Procedure 71130.10 (cyber security event reporting)
 #   - FISMA NIST SP 800-137 continuous monitoring reporting
 
-import os
 import json
-import uuid
 import logging
+import os
+import uuid
 from datetime import datetime, timezone
-from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
 
 from threat_intelligence import get_engine
 
