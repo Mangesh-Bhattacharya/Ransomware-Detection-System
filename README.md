@@ -1,5 +1,8 @@
 # ⛨ Ransomware Detection System
 
+[![Security Scan](https://github.com/Mangesh-Bhattacharya/Ransomware-Detection-System/actions/workflows/security.yml/badge.svg)](https://github.com/Mangesh-Bhattacharya/Ransomware-Detection-System/actions/workflows/security.yml)
+[![License: MIT](https://img.shields.io/github/license/Mangesh-Bhattacharya/Ransomware-Detection-System)](LICENSE)
+
 A Python-based, multi-industry ransomware detection and response platform that monitors
 file system activity and running processes in real time.  Designed for use in regulated
 sectors including **Healthcare, Banking & Finance, Nuclear, Energy & Utilities, and Government**,
